@@ -1,0 +1,13 @@
+CRITICAL - 2025-02-25 21:22:44 --> ErrorException: fopen(./data/structures/1A34_C_A/info.txt): Failed to open stream: No such file or directory
+[Method: GET, Route: entry/1A34_C_A]
+in APPPATH/Controllers/Home.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(./data/structures/1A34_C_A/info.txt): Failed to open stream: No such file or directory', '/Users/diego/Documents/GitHub/rnapedia2_5/app/Controllers/Home.php', 35)
+ 2 APPPATH/Controllers/Home.php(35): fopen('./data/structures/1A34_C_A/info.txt', 'r')
+ 3 APPPATH/Controllers/Home.php(154): App\Controllers\Home->getInfo('1A34_C_A')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->entry('1A34_C_A')
+ 5 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/diego/Documents/GitHub/rnapedia2_5/public/index.php')
