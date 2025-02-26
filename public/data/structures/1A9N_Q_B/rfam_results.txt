@@ -1,0 +1,12 @@
+#target name         accession query name           accession mdl mdl from   mdl to seq from   seq to strand trunc pass   gc  bias  score   E-value inc description of target
+#------------------- --------- -------------------- --------- --- -------- -------- -------- -------- ------ ----- ---- ---- ----- ------ --------- --- ---------------------
+U2                   RF00004   seq1                 -          cm      155      178        1       24      + 5'&3'    4 0.54   0.0    9.1       1.4 ?   U2 spliceosomal RNA
+CRISPR-DR12          RF01325   seq1                 -          cm        1       18        7       24      +    3'    3 0.50   0.0   10.6       3.3 ?   CRISPR RNA direct repeat element
+#
+# Program:         cmscan
+# Version:         1.1.4 (Dec 2020)
+# Pipeline mode:   SCAN
+# Query file:      /scratch/Luana/RNApedia/structures/1A9N_Q_B/rna_sequence.txt
+# Target file:     /scratch/Luana/RNApedia/Rfam.cm
+# Option settings: /usr/lib/infernal/cmscan --tblout /scratch/Luana/RNApedia/structures/1A9N_Q_B/rfam_results.txt /scratch/Luana/RNApedia/Rfam.cm /scratch/Luana/RNApedia/structures/1A9N_Q_B/rna_sequence.txt 
+# [ok]

@@ -1,0 +1,6 @@
+GC_content: 54.166666666666664
+Base Composition:
+A: 4
+C: 7
+G: 6
+U: 7

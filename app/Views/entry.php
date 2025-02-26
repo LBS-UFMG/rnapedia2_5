@@ -99,10 +99,15 @@
                         <div class="caption">
                             <h4 class="texto-azul m-2"><strong>RNA</strong></h4>
                             <table class="table table-condensed table-striped">
-                                <tr><th>Base Composition (A)</th><td><?= $rna['A'] ?></td></tr>
-                                <tr><th>Base Composition (C)</th><td><?= $rna['C'] ?></td></tr>
-                                <tr><th>Base Composition (G)</th><td><?= $rna['G'] ?></td></tr>
-                                <tr><th>Base Composition (U)</th><td><?= $rna['U'] ?></td></tr>
+                                <tr>
+                                    <th>Base Composition (A - C - G - U)</th>
+                                    <td>
+                                        <?= $rna['A'] ?>- 
+                                        <?= $rna['C'] ?>-
+                                        <?= $rna['G'] ?>- 
+                                        <?= $rna['U'] ?>
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <th>GC content (%)</th>

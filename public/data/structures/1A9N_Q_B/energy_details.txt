@@ -1,0 +1,8 @@
+External loop                           :   -60
+Interior loop (  1, 23) CG; (  2, 22) CG:  -330
+Interior loop (  2, 22) CG; (  3, 21) UA:  -210
+Interior loop (  3, 21) UA; (  4, 20) GC:  -210
+Interior loop (  4, 20) GC; (  5, 19) GC:  -330
+Hairpin  loop (  5, 19) GC              :   520
+CCUGGUAUUGCAGUACCUCCAGGU
+(((((.............))))). ( -6.20)
