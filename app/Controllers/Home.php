@@ -81,6 +81,55 @@ class Home extends BaseController
         
         $rna["seq"] = $rnaseq;
 
+        # novas atualizações -------
+
+        $url = "./data/structures/$id/info_extra_$id.csv";
+        $file_handle = fopen($url, 'r');
+        $lines = "";
+        if ($file_handle) {
+            while (($line = fgets($file_handle)) !== false) {
+                $tmp = explode("\t",$line);
+                $rna[ $tmp[0] ] = $tmp[1];
+
+                $rna["pronab_id"] = $tmp[0]; #1
+                $rna["dg_pronab"] = $tmp[1];
+                $rna["kd_pronab"] = $tmp[2];
+                $rna["all_attoms_asa_complex"] = $tmp[3];
+                $rna["delta_asa"] = $tmp[4]; #5
+                $rna["bsa_all_atoms"] = $tmp[5];
+                $rna["non_polar_asa"] = $tmp[6];
+                $rna["non_polar_asa_complexo"] = $tmp[7];
+                $rna["delta_asa_non_polar"] = $tmp[8];
+                $rna["bsa_non_polar"] = $tmp[9]; #10
+                $rna["all_polar_asa_complexo"] = $tmp[10];
+                $rna["delta_asa_all_polar"] = $tmp[11];
+                $rna["bsa_all_polar"] = $tmp[12];
+                $rna["notation"] = $tmp[13];
+                $rna["delta_g"] = $tmp[14]; #15
+
+                break; # pega apenas a primeira linha
+            }
+            fclose($file_handle);
+        } else {
+            echo "Não foi possível abrir o arquivo.";
+        }
+
+        # tipo de rna
+        $url = "./data/structures/$id/result_rna_sequence.txt.json";
+        $file_handle = fopen($url, 'r');
+        $lines = "";
+        if ($file_handle) {
+            while (($line = fgets($file_handle)) !== false) {
+                $lines = $lines.$line;
+            }
+            fclose($file_handle);
+        } else {
+            echo "Não foi possível abrir o arquivo.";
+        }
+        $json_types = json_decode($lines,true);
+
+        $rna['type'] = $json_types['Tipo de RNA'];
+
         return $rna;
     }
 

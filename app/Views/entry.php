@@ -4,7 +4,7 @@
 <div class="container py-5">
 
     <div class="row">
-        <div class="col-md-7 col-12" style="overflow: auto; height: 800px;">
+        <div class="col-md-7 col-12" style="">
             <div class="row">
                 <div class="col-md-12">
                     <div class="thumbnail" style="border-left: #031430 5px solid; color: #ccc">
@@ -46,9 +46,6 @@
                                 </div>
                             </div>
 
-
-
-
                             <div style="margin: 10px 0 30px 0">
                                 <a target="_blank" style='text-decoration:none' title="Search in PDB" href="https://www.rcsb.org/structure/<?= substr($id, 0, 4) ?>">
                                     <span class="badge bg-dark text-light ms-2">PDB</span>
@@ -62,6 +59,11 @@
                                     <span class="badge bg-warning">PubMed</span>
                                 </a>
 
+                                <a target="_blank" style='text-decoration:none' title="See 3D view" href="https://www.rcsb.org/3d-view/<?= substr($id, 0, 4) ?>">
+                                    <span class="badge bg-success">Full 3D-view</span>
+                                </a>
+
+                                
 
                             </div>
 
@@ -74,20 +76,116 @@
                                     <th>Description</th>
                                     <td><?= $info[2] ?></td>
                                 </tr>
-
+                                <tr>
+                                    <th>PDB ID</th>
+                                    <td><?= substr($id, 0, 4) ?></td>
+                                </tr>
+                                <tr>
+                                    <th>RNA chain</th>
+                                    <td><?= substr($id, 5, 1) ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Protein chain</th>
+                                    <td><?= substr($id, 7, 1) ?></td>
+                                </tr>
                                 <tr>
                                     <th>RNA length</th>
                                     <td><?= $info[3] ?></td>
                                 </tr>
-
                                 <tr>
-                                    <th>Protein length</th>
+                                    <th>Protein chain length</th>
                                     <td><?= $info[4] ?></td>
                                 </tr>
-
                                 <tr>
-                                    <th>Number of contacts</th>
+                                    <th>Number of contacts protein-RNA
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Total of contacts calculated using RNApedia contact algorithm. See Contacts section for more details."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
                                     <td><?= $info[5] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Pronab ID 
+                                        <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Identification of the complex in the ProNAB database contains information on protein-RNA interactions. More details at https://web.iitm.ac.in/bioinfo2/pronab"><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['pronab_id'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>K<sub>D</sub> - Pronab (mM)
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Kd - ProNAB (nM): Dissociation constant (Kd) obtained from the ProNAB database, measuring the affinity between two molecules. It is calculated as the ratio between the dissociation and association rates. Lower values indicate stronger interactions, while higher values suggest weaker binding."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['kd_pronab'] ?></td>
+
+
+                                </tr>
+                                <tr>
+                                    <th>ΔG - Pronab (Kcal/mol)
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔG - ProNAB (kcal/mol): Gibbs free energy associated with protein-RNA interaction, expressed in kcal/mol. Negative values indicate spontaneous and stable interactions."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['dg_pronab'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>All-atoms ASA Complex                                   
+                                        <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="All-atoms ASA Complex: Determines the ASA of the protein-RNA complex considering all atoms of both molecules together, reflecting the global exposure of the interaction surface"><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['all_attoms_asa_complex'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>ΔASA All-atoms
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA All-atoms: Calculates the difference between the total ASA of the individual molecules (protein and RNA separately) and the ASA of the formed complex. It represents the surface area that was buried due to the interaction.
+"><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['delta_asa'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>BSA All-atoms
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="BSA All-atoms: Measures the buried surface area (BSA) considering all atoms. This metric is directly related to the stability of the protein-RNA complex."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
+                                    <td><?= $rna['bsa_all_atoms'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Non-polar ASA
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content=""><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
+                                    <td><?= $rna['non_polar_asa'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Non-polar ASA Complex
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Non-polar ASA Complex: Determines the non-polar ASA of the protein-RNA complex, allowing evaluation of the impact of hydrophobic interactions at the complex interface."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
+                                    <td><?= $rna['non_polar_asa_complexo'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>ΔASA Non-polar
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA Non-polar: Calculates the difference between the non-polar ASA before and after complex formation. It indicates which hydrophobic regions were buried in the interaction."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['delta_asa_non_polar'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>BSA Non-polar
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="BSA Non-polar: Determines the buried surface area considering only non-polar regions. This metric helps evaluate the hydrophobic contribution to the stability of the complex."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
+                                    <td><?= $rna['bsa_non_polar'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>All polar ASA Complex
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="All polar ASA Complex: Determines the polar ASA of the complex, allowing evaluation of the contribution of polar regions to the protein-RNA interaction."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['all_polar_asa_complexo'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>ΔASA All polar
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA All polar: Measures the difference between the polar ASA before and after complex formation, indicating which polar regions were buried in the interaction."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['delta_asa_all_polar'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>BSA All polar
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="BSA All polar: Calculates the buried surface area considering only polar regions, highlighting the contribution of polar interactions to the stability of the protein-RNA complex."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td><?= $rna['bsa_all_polar'] ?></td>
                                 </tr>
                             </table>
                         </div>
@@ -95,22 +193,33 @@
                 </div>
 
                 <div class="col-12">
-                    <div class="thumbnail" style="border-left: #031430 5px solid; color: #ccc">
+                    <div class="thumbnail" style="border-left: #ff2233 5px solid; color: #ccc">
                         <div class="caption">
-                            <h4 class="texto-azul m-2"><strong>RNA</strong></h4>
+                            <h4 class="m-2" style="color:#ff2233"><strong>RNA</strong></h4>
                             <table class="table table-condensed table-striped">
+
                                 <tr>
-                                    <th>Base Composition (A - C - G - U)</th>
+                                    <th>Type
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="RNA Type: Classification of RNA according to RNAcentral. Example: 'misc_RNA' (miscellaneous RNA) – a category used for RNAs that do not fit into other classifications, such as rRNA or tRNA."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
                                     <td>
-                                        <?= $rna['A'] ?>- 
-                                        <?= $rna['C'] ?>-
-                                        <?= $rna['G'] ?>- 
-                                        <?= $rna['U'] ?>
+                                        <?= $rna['type'] ?>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <th>GC content (%)</th>
+                                    <th>Base Composition (A|C|G|U)
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Base Composition (A|C|G|U): Indicates the number of each nitrogenous base in the RNA sequence."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td>
+                                        <?= $rna['A'] ?>|<?= $rna['C'] ?>|<?= $rna['G'] ?>|<?= $rna['U'] ?>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>GC content (%)
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="GC Content (%): Percentage of Guanine (G) and Cytosine (C) bases in the sequence, influencing structural stability."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
                                     <td>
                                         <div class="progress">
 
@@ -119,6 +228,39 @@
                                     </td>
                                 </tr>
                                
+                                <tr>
+                                    <th>Dot-Bracket Notation for RNA Secondary Structure
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Dot-Bracket Notation for RNA Secondary Structure: A simplified representation of RNA secondary structure calculated by RNAfold using symbols:
+'(' and ')' indicate paired bases;
+'.' represents unpaired bases;
+This notation helps visualize RNA structural organization, including loops and stems."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td>
+                                        <?= $rna['notation'] ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Free Energy of the RNA Secondary Structure
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Free Energy of the RNA Secondary Structure (kcal/mol): Free energy of the RNA secondary structure, calculated by the RNAfold software. Negative values indicate greater structural stability."><i class="bi bi-question-circle-fill"></i></a>
+                                    </th>
+                                    <td>
+                                        <?= $rna['delta_g'] ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Secondary structure mapping
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Representation: Detailed information about the RNA secondary structure, identifying internal loops, hairpins, and multi-loops.
+Format: Each line follows a standardized format:
+[TYPE] (Start_Position, End_Position) [Paired_Bases] ; (Start_Position, End_Position) [Paired_Bases]: [Energy] –
+Example:
+Interior loop (1,117) GC; (2,116) CG: -340 kcal/mol
+"><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
+                                    <td>
+                                        <a target="_blank" href="<?= base_url('data/structures/'.$id.'/parsed_energy_details.txt') ?>">Download</a>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <th>Sequence</th>
                                     <td style="width: 200px; display: inline-block; word-wrap:break-word;"><strong>
@@ -135,19 +277,31 @@
                             <h4 class="texto-azul m-2"><strong>Protein</strong></h4>
                             <table class="table table-condensed table-striped">
                                 <tr>
-                                    <th>Molecular weight</th>
+                                    <th>Molecular weight
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Molecular Weight (Da): The molecular weight of the protein in Daltons (Da) is calculated based on amino acid composition."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
                                     <td><?= number_format($protein['molecular_weight'],2) ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Aromaticity</th>
+                                    <th>Aromaticity
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Aromaticity: Aromaticity index of the protein, representing the fraction of aromatic amino acids (phenylalanine, tyrosine, and tryptophan) in the sequence."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
                                     <td><?= number_format($protein['aromaticity'],2) ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Instability</th>
+                                    <th>Instability
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Instability Index: Indicates the in vitro stability of the protein. Values above 40 suggest an unstable protein."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
                                     <td><?= number_format($protein['instability'],2) ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Isoelectric point</th>
+                                    <th>Isoelectric point
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Isoelectric Point (pI): The isoelectric point of the protein is the pH at which the molecule has no net charge."><i class="bi bi-question-circle-fill"></i></a>
+
+                                    </th>
                                     <td><?= number_format($protein['isoelectric_point'],2) ?></td>
                                 </tr>
                                 
@@ -156,15 +310,16 @@
                                     <td style="width: 450px; display: inline-block; word-wrap:break-word;"><strong>
                                     <?= $protein['seq'] ?></strong></td>
                                 </tr>
+                               
                             </table>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-12 col-lg-12">
-                    <div class="thumbnail" style="border-left: #031430 5px solid; color: #ccc">
+                    <div class="thumbnail" style="border-left: #52af33 5px solid; color: #ccc">
                         <div class="caption">
-                            <h4 class="texto-azul m-2"><strong>Contacts</strong></h4>
+                            <h4 class="text-success m-2"><strong>Contacts</strong></h4>
                             <table class="table table-condensed table-striped small">
 
                                 <?php $ct = 0; foreach($contacts as $contact): ?>
@@ -173,6 +328,8 @@
                                         <?php foreach($contact as $c): ?>
                                             <?php if(strlen($c)>15): ?>
                                                 <td><?= number_format(floatval($c),2) ?>
+                                            <?php elseif(trim($c) == 'hydrogen bond'): ?>
+                                                <td><span class="badge bg-success" title="Hydrogen Bond">HB</span></td>
                                             <?php else: ?>
                                                 <td><?= $c ?>
                                             <?php endif; ?>
@@ -199,6 +356,8 @@
             <input id="receptor_chain" value="</?=''?>" hidden></input>
 
             <div id="3DmolViewerComplex" style="min-height: 800px; margin:10px 0; width: 100%; position: relative;"></div>
+
+            <img src="<?=base_url('/data/structures/'.$id.'/rna_structure.jpg')?>" class="w-100">
         </div>
     </div>
 
@@ -209,10 +368,18 @@
 <?= $this->section('scripts') ?>
 <script>
     $(function() {
+        // habilita popover
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl);
+        });
+
+
         let BASE_URL = "";
         let PDB_DIR = BASE_URL + "/data/structures/<?= $id ?>/"
 
         let rna_chain = "<?= substr($id, 5, 1) ?>";
+        let protein_chain = "<?= substr($id, 7, 1) ?>";
 
         // GLOBAL VAR
         viewer = $3Dmol.createViewer("3DmolViewerComplex", {
@@ -289,6 +456,15 @@
             }, {
                 chain: rna_chain
             }); /* lines */
+
+            viewer.addSurface(
+                $3Dmol.SurfaceType.VDW, {
+                    'opacity': 0.6,
+                    'color': 'white'
+                }, {
+                    chain: protein_chain
+                }
+            );
 
 
             /* Name of the atoms */
