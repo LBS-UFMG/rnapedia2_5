@@ -375,7 +375,7 @@ Interior loop (1,117) GC; (2,116) CG: -340 kcal/mol
         });
 
 
-        let BASE_URL = "";
+        let BASE_URL = "<?= base_url() ?>";
         let PDB_DIR = BASE_URL + "/data/structures/<?= $id ?>/"
 
         let rna_chain = "<?= substr($id, 5, 1) ?>";
