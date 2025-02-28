@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-md-12 p-4">
                             <h4 class=""><strong>How to cite:</strong></h4>
-                            <p class="small" id="browse">Bastos et al. RNApedia. Software. Laboratory of Bioinformatics and Systems. Universidade Federal de Minas Gerais. 2024.</p>
+                            <p class="small" id="browse">BASTOS, Luana Luiza et al. A strategy for refining the calculation of contacts in protein-RNA complexes. In: Simpósio Brasileiro de Bioinformática (BSB). SBC, 2024. p. 241-246.</p>
                         </div>
                     </div>
                 </div>
