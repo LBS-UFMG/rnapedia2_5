@@ -175,7 +175,7 @@ class Home extends BaseController
         $contacts = [];
 
         # contacts
-        $url = "./data/structures/$id/$id"."_interacoes.csv";
+        $url = "./data/structures/$id/$id"."_contacts.csv";
         $file_handle = fopen($url, 'r');
         if ($file_handle) {
             while (($line = fgets($file_handle)) !== false) {
