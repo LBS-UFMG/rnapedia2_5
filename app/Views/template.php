@@ -58,7 +58,7 @@
                 <div class="col ps-5">
                     <img src="<?= base_url('/img/logo2.svg') ?>" width="200px">
                     <p class="bege small pt-3 col-9">RNApedia is an innovative database designed to store and manage three-dimensional (3D) structures of protein-RNA complexes. RNApedia offer a comprehensive platform for researchers to access, share, and analyze 3D structural data, facilitating advancements in molecular biology, bioinformatics, and related fields.</p>
-                    <p class="small text-white" style="font-size: 0.7em;">©<?=date('Y')?> RNApedia v.2.5.228 | Laboratory of Bioinformatics and Systems (UFMG)</p>
+                    <p class="small text-white" style="font-size: 0.7em;">©<?=date('Y')?> RNApedia v.2.5.307 | Laboratory of Bioinformatics and Systems (UFMG)</p>
                 </div>
 
                 <div class="col">
