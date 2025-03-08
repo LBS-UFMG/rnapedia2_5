@@ -79,6 +79,7 @@
         const plotar = (dados) => {
 
             console.log(dados)
+            $.fn.dataTable.ext.errMode = 'none';
 
             // ativar datatable
             $("#table_explore").DataTable({
