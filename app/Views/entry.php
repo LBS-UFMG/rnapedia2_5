@@ -235,7 +235,7 @@ This notation helps visualize RNA structural organization, including loops and s
                                     <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Free Energy of the RNA Secondary Structure (kcal/mol): Free energy of the RNA secondary structure, calculated by the RNAfold software. Negative values indicate greater structural stability."><i class="bi bi-question-circle-fill"></i></a>
                                     </th>
                                     <td>
-                                        <?= $rna['delta_g'] ?>
+                                        <?= str_replace("= ","",$rna['delta_g']) ?>
                                     </td>
                                 </tr>
                                 <tr>
