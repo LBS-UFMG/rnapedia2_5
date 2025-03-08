@@ -82,6 +82,7 @@
 
             // ativar datatable
             $("#table_explore").DataTable({
+                "errorMode": "none", // Desativa os warnings
                 "data": dados,
                 // "order": [
                 //     [0, 'asc']
