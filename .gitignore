@@ -18,3 +18,5 @@ application/logs/*
 /vendor/
 .DS_Store
 .env
+
+writable/debugbar

@@ -64,7 +64,7 @@
                 // separa as células
                 celulas = linha.split("\t")
 
-                celulas[0] = `<strong><a href="<?=base_url()?>/entry/${celulas[0]}">${celulas[0]}</a></strong>`;
+                celulas[0] = `<strong><a href="<?=base_url()?>entry/${celulas[0]}">${celulas[0]}</a></strong>`;
 
                 // salva células
                 dados_tabelados.push(celulas)
