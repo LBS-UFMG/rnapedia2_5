@@ -27,6 +27,8 @@
 
                                             <li><a class="dropdown-item" href='<?= base_url() ?>data/structures/<?= $id ?>/<?= $id ?>.pdb'>PDB</a></li>
 
+                                            <li><a class="dropdown-item" href='<?= base_url() ?>data/structures/<?= $id ?>/<?= $id ?>_contacts.csv'>Contacts</a></li>
+
                                             <li><hr class="dropdown-divider"></li>
 
                                             <p class="ms-3 mb-1 text-muted small">
